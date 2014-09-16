@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="repA4" pageWidth="595" pageHeight="842" columnWidth="539" leftMargin="28" rightMargin="28" topMargin="28" bottomMargin="28" uuid="7bb9145e-017c-4df7-9ce4-5afcf8b24122">
+	<property name="ireport.zoom" value="1.100000000000002"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<subDataset name="dataset1" uuid="3966d679-c44a-4c47-ad26-3a771ca9009d"/>
+	<field name="country" class="java.lang.String"/>
+	<field name="document" class="java.lang.String"/>
+	<field name="name" class="java.lang.String"/>
+	<field name="price" class="java.lang.Long"/>
+	<field name="rate" class="java.lang.Integer"/>
+	<field name="fullPrice" class="java.lang.Long"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="786" splitType="Stretch">
+			<frame>
+				<reportElement x="0" y="0" width="539" height="786" uuid="4c86dff2-271f-44c4-8211-693f8a401851"/>
+				<rectangle>
+					<reportElement x="0" y="0" width="539" height="786" uuid="0e2b81b0-4fe6-4cca-99ae-1e27ae76889c"/>
+				</rectangle>
+				<staticText>
+					<reportElement x="0" y="0" width="195" height="20" uuid="d1c7ff5e-19c0-4565-b5ba-28dc203b9e60"/>
+					<textElement verticalAlignment="Top">
+						<font fontName="Times New Roman" size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[ ЗАО "Мерком". Дата оформления:]]></text>
+				</staticText>
+				<textField pattern="dd.MM.yyyy">
+					<reportElement x="195" y="0" width="96" height="20" uuid="76e3d990-852d-4596-9406-8cb69e0e7403"/>
+					<textElement>
+						<font fontName="Times New Roman" size="12" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="439" y="0" width="100" height="35" uuid="9ab8d598-c76c-48dd-972d-8d4211719085"/>
+					<textElement textAlignment="Right">
+						<font fontName="Times New Roman" size="18" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{country}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="0" y="760" width="539" height="26" uuid="1589292a-8b5a-4f3e-b9e0-c29573041376"/>
+					<textElement verticalAlignment="Bottom">
+						<font fontName="Times New Roman" size="12" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{document}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Opaque" x="15" y="219" width="151" height="68" uuid="1fcd6fd6-1f48-4b0a-8440-6c9b1d7ad540"/>
+					<textElement>
+						<font fontName="Times New Roman" size="48" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+					</textElement>
+					<text><![CDATA[ Цена:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="0" y="35" width="539" height="184" uuid="3d4ac835-ce69-4a87-a9cd-bcc8676ab3f1"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Times New Roman" size="64" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+				</textField>
+				<textField pattern="">
+					<reportElement x="0" y="273" width="539" height="148" uuid="323db541-d1d8-4289-bf5a-a2877c99c906"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="100" isBold="true" isUnderline="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{price}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="4" y="421" width="191" height="56" uuid="67bda96f-0939-43c1-88cc-0c7dfd49a9e9"/>
+					<textElement textAlignment="Center" verticalAlignment="Bottom">
+						<font fontName="Times New Roman" size="48" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Cкидка:]]></text>
+				</staticText>
+				<textField pattern="">
+					<reportElement x="6" y="594" width="533" height="166" uuid="710c587b-f79e-4af6-95fd-eec8c9695d11"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Times New Roman" size="100"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{fullPrice}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="4" y="594" width="524" height="166" uuid="33bb30c6-83a8-4df1-b9c6-6285a4bc3011"/>
+					<graphicElement>
+						<pen lineWidth="3.0"/>
+					</graphicElement>
+				</line>
+				<line direction="BottomUp">
+					<reportElement x="6" y="594" width="522" height="166" uuid="cbbdff5c-4aad-4247-9f93-8bd53c48347d"/>
+					<graphicElement>
+						<pen lineWidth="3.0"/>
+					</graphicElement>
+				</line>
+				<textField>
+					<reportElement x="4" y="477" width="136" height="117" uuid="94b4a783-56b7-491c-9f59-a7546fbbb7e8"/>
+					<textElement textAlignment="Right" verticalAlignment="Top">
+						<font fontName="Times New Roman" size="72" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{rate}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="140" y="477" width="88" height="117" uuid="deb2fa82-dff4-4c8e-9b0b-10ff172c20b8"/>
+					<textElement>
+						<font fontName="Times New Roman" size="72" isBold="true"/>
+					</textElement>
+					<text><![CDATA[%]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</detail>
+</jasperReport>

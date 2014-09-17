@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>by.mercom</groupId>
-    <artifactId>printPriceList</artifactId>
+    <artifactId>PrintSalePriceList</artifactId>
     <version>1.0</version>
 
     <dependencies>
@@ -59,7 +59,7 @@
                 <version>2.6</version>
                 <executions>
                     <execution>
-                        <id>copy-resources</id>
+                        <id>copy-resources-1</id>
                         <phase>package</phase>
                         <goals>
                             <goal>copy-resources</goal>
@@ -68,7 +68,7 @@
                             <outputDirectory>${project.build.directory}/reports</outputDirectory>
                             <resources>
                                 <resource>
-                                    <directory>reports/</directory>
+                                    <directory>${project.basedir}/reports/</directory>
                                     <includes>
                                         <include>*.jasper</include>
                                     </includes>
@@ -76,32 +76,50 @@
                             </resources>
                         </configuration>
                     </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <artifactId>maven-resources-plugin</artifactId>
-                <version>2.6</version>
-                <executions>
                     <execution>
-                        <id>copy-resources</id>
-                        <phase>package</phase>
+                        <id>copy-resources-2</id>
+                            <phase>package</phase>
                         <goals>
                             <goal>copy-resources</goal>
                         </goals>
                         <configuration>
                             <outputDirectory>${project.build.directory}</outputDirectory>
-                        <resources>
-                        <resource>
-                        <directory>${project.basedir}/</directory>
-                        <includes>
-                        <include>SQL.properties</include>
-                        </includes>
-                        </resource>
-                    </resources>
-                    </configuration>
-                </execution>
-            </executions>
-        </plugin>
+                            <resources>
+                                <resource>
+                                    <directory>${project.basedir}/</directory>
+                                    <includes>
+                                        <include>SQL.properties</include>
+                                    </includes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <!--<plugin>-->
+                <!--<artifactId>maven-resources-plugin</artifactId>-->
+                <!--<version>2.6</version>-->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<id>copy-resources</id>-->
+                        <!--<phase>package</phase>-->
+                        <!--<goals>-->
+                            <!--<goal>copy-resources</goal>-->
+                        <!--</goals>-->
+                        <!--<configuration>-->
+                            <!--<outputDirectory>${project.build.directory}</outputDirectory>-->
+                        <!--<resources>-->
+                        <!--<resource>-->
+                        <!--<directory>${project.basedir}/</directory>-->
+                        <!--<includes>-->
+                        <!--<include>SQL.properties</include>-->
+                        <!--</includes>-->
+                        <!--</resource>-->
+                    <!--</resources>-->
+                    <!--</configuration>-->
+                <!--</execution>-->
+            <!--</executions>-->
+        <!--</plugin>-->
 
         <plugin>
             <groupId>org.apache.maven.plugins</groupId>

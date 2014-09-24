@@ -119,7 +119,7 @@ public class CardTableModel extends AbstractTableModel {
             case 0:
                 return selected.get(rowIndex);
             case 1:
-                return cards.get(rowIndex).getName();
+                return cards.get(rowIndex).getName() + cards.get(rowIndex).getMeasure();
             case 2:
                 return cards.get(rowIndex).getPrice();
             case 3:

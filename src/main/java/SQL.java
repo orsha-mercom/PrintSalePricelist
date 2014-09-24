@@ -83,10 +83,11 @@ public class SQL {
         ArrayList<Card> cards = new ArrayList<Card>();
         Statement st = null;
         String query = "" +
-                "SELECT tmc.name, docContent.pricePAll, docContent.WHDocumentID, country.name as countryName FROM WHDocumentContent as docContent " +
+                "SELECT tmc.name, docContent.pricePAll, docContent.WHDocumentID, country.name as countryName, measure.name as measure, measure.QPInit FROM WHDocumentContent as docContent " +
                 "JOIN tmc on docContent.nomenclid = tmc.id " +
                 "JOIN DivisionExt on tmc.producerId = DivisionExt.id " +
                 "JOIN Country on country.id = DivisionExt.CountryId " +
+                "JOIN Measure on tmc.MeasureID = Measure.id " +
                 "WHERE " + getDocsId(docsId);
 
         try {
@@ -95,9 +96,10 @@ public class SQL {
             while(rs.next()) {
                 String name = rs.getString("name");
                 String docId = rs.getString("WHDocumentID");
+                String measure = rs.getString("measure") + " " + rs.getString("QPInit");
                 Long price = (long)(Double.parseDouble(rs.getString("pricePAll")));
                 String country = rs.getString("countryName");
-                cards.add(new Card(docId, name, price, country));
+                cards.add(new Card(docId, name, price, country, measure));
             }
         } catch (SQLException sql_ex) {
             Main.errMsg(sql_ex.getMessage());

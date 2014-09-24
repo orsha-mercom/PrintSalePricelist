@@ -9,6 +9,15 @@ public class Card {
     private Long fullPrice;
     private int count;
     private String country;
+    private String measure;
+
+    public String getMeasure() {
+        return measure;
+    }
+
+    public void setMeasure(String measure) {
+        this.measure = measure;
+    }
 
     public String getCountry() {
         return country;
@@ -60,9 +69,10 @@ public class Card {
         this.count = count;
     }
 
-    public Card(String docId, String name, Long currentPrice, String country) {
+    public Card(String docId, String name, Long currentPrice, String country, String measure) {
         this.docId = docId;
         this.name = name;
+        setMeasure(measure);
         this.country = country;
         this.currentPrice = currentPrice;
         this.rate = Integer.parseInt(Main.getDefaultPropPriceList("discountRate"));

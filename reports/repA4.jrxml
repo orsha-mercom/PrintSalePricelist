@@ -10,6 +10,7 @@
 	<field name="price" class="java.lang.Long"/>
 	<field name="rate" class="java.lang.Integer"/>
 	<field name="fullPrice" class="java.lang.Long"/>
+	<field name="measure" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -21,21 +22,21 @@
 					<reportElement x="0" y="0" width="539" height="786" uuid="0e2b81b0-4fe6-4cca-99ae-1e27ae76889c"/>
 				</rectangle>
 				<staticText>
-					<reportElement x="0" y="0" width="195" height="20" uuid="d1c7ff5e-19c0-4565-b5ba-28dc203b9e60"/>
+					<reportElement x="0" y="0" width="195" height="16" uuid="d1c7ff5e-19c0-4565-b5ba-28dc203b9e60"/>
 					<textElement verticalAlignment="Top">
 						<font fontName="Times New Roman" size="12" isBold="true"/>
 					</textElement>
 					<text><![CDATA[ ЗАО "Мерком". Дата оформления:]]></text>
 				</staticText>
 				<textField pattern="dd.MM.yyyy">
-					<reportElement x="195" y="0" width="96" height="20" uuid="76e3d990-852d-4596-9406-8cb69e0e7403"/>
+					<reportElement x="195" y="0" width="96" height="16" uuid="76e3d990-852d-4596-9406-8cb69e0e7403"/>
 					<textElement>
 						<font fontName="Times New Roman" size="12" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="439" y="0" width="100" height="35" uuid="9ab8d598-c76c-48dd-972d-8d4211719085"/>
+					<reportElement x="439" y="0" width="100" height="22" uuid="9ab8d598-c76c-48dd-972d-8d4211719085"/>
 					<textElement textAlignment="Right">
 						<font fontName="Times New Roman" size="18" isBold="true"/>
 					</textElement>
@@ -56,7 +57,7 @@
 					<text><![CDATA[ Цена:]]></text>
 				</staticText>
 				<textField>
-					<reportElement x="0" y="35" width="539" height="184" uuid="3d4ac835-ce69-4a87-a9cd-bcc8676ab3f1"/>
+					<reportElement x="0" y="22" width="539" height="171" uuid="3d4ac835-ce69-4a87-a9cd-bcc8676ab3f1"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Times New Roman" size="64" isBold="true"/>
 					</textElement>
@@ -109,6 +110,13 @@
 					</textElement>
 					<text><![CDATA[%]]></text>
 				</staticText>
+				<textField>
+					<reportElement x="291" y="193" width="248" height="55" uuid="935105f5-c754-4b1b-8737-f726ad84cb07"/>
+					<textElement>
+						<font size="36" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{measure}]]></textFieldExpression>
+				</textField>
 			</frame>
 		</band>
 	</detail>

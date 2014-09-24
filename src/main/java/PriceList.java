@@ -10,6 +10,10 @@ public class PriceList {
         this.doc = doc;
     }
 
+    public String getMeasure() {
+        return card.getMeasure();
+    }
+
     public PriceList(Card card) {
         this.card = card;
     }

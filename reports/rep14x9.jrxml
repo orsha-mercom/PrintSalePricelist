@@ -59,7 +59,7 @@
 				<textField pattern="#,##0">
 					<reportElement x="107" y="111" width="285" height="68" uuid="323db541-d1d8-4289-bf5a-a2877c99c906"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="SansSerif" size="58" isBold="true" isUnderline="true"/>
+						<font fontName="SansSerif" size="54" isBold="true" isUnderline="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{price}]]></textFieldExpression>
 				</textField>
@@ -111,9 +111,9 @@
 					<text><![CDATA[%]]></text>
 				</staticText>
 				<textField>
-					<reportElement x="224" y="86" width="168" height="26" uuid="e2bb3e0d-8851-48ed-a069-7498f4ceb263"/>
+					<reportElement x="224" y="86" width="168" height="24" uuid="e2bb3e0d-8851-48ed-a069-7498f4ceb263"/>
 					<textElement>
-						<font size="22" isBold="true"/>
+						<font size="18" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{measure}]]></textFieldExpression>
 				</textField>

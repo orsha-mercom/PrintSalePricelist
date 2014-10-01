@@ -13,7 +13,7 @@ import java.util.Properties;
  */
 public class SQL {
     private Connection conn = null;
-    private String typeDocId;
+    private String[] typeDocId;
 
     /**
      * init conn string and SQLQuery
@@ -29,7 +29,7 @@ public class SQL {
             prop.load(is);
             //defaultPriceListProp.load(getClass().getClassLoader().getResourceAsStream("SQL.properties"));
             conn = DriverManager.getConnection(prop.getProperty("connString"));
-            typeDocId = prop.getProperty("typeDocId");
+            typeDocId = prop.getProperty("typeDocId").split(",");
         } catch (IOException io_ex) {
             conn = null;
             Main.errMsg(io_ex.getMessage());
@@ -115,6 +115,18 @@ public class SQL {
 
     }
 
+    public String getDocKind() {
+        String result = "(";
+        for(String kind :typeDocId) {
+            if (result.length() > 1) {
+                result = result + " or ";
+            }
+            result = result + "doc.kind = " + kind;
+        }
+        result = result + ")";
+        return result;
+    }
+
     /**
      * get array documents with database
      * @param firstDate - date condition
@@ -129,7 +141,7 @@ public class SQL {
                 "JOIN Division as div on div.id = doc.divisionid " +
                 "WHERE doc.status = 1 and " +
                 "doc.warehouseid = 1 and " +
-                "doc.kind = " + typeDocId + " and " +
+                getDocKind() + " and " +
                 "doc.date > '" + getDateForSQL(firstDate, -1) + "' and " +
                 "doc.date < '" + getDateForSQL(endDate, 1) + "'";
         try {

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rep6x4" columnCount="3" printOrder="Horizontal" pageWidth="595" pageHeight="842" columnWidth="173" columnSpacing="10" leftMargin="28" rightMargin="28" topMargin="28" bottomMargin="28" uuid="7bb9145e-017c-4df7-9ce4-5afcf8b24122">
+	<property name="ireport.zoom" value="3.7974983358324375"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="150"/>
+	<subDataset name="dataset1" uuid="3966d679-c44a-4c47-ad26-3a771ca9009d"/>
+	<parameter name="NamePrice" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Цена за "]]></defaultValueExpression>
+	</parameter>
+	<field name="country" class="java.lang.String"/>
+	<field name="document" class="java.lang.String"/>
+	<field name="name" class="java.lang.String"/>
+	<field name="price" class="java.lang.Long"/>
+	<field name="rate" class="java.lang.Integer"/>
+	<field name="fullPrice" class="java.lang.Long"/>
+	<field name="measure" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="116" splitType="Stretch">
+			<frame>
+				<reportElement x="0" y="0" width="173" height="116" uuid="4c86dff2-271f-44c4-8211-693f8a401851"/>
+				<rectangle>
+					<reportElement x="0" y="0" width="173" height="116" uuid="0e2b81b0-4fe6-4cca-99ae-1e27ae76889c"/>
+				</rectangle>
+				<staticText>
+					<reportElement x="0" y="0" width="92" height="7" uuid="d1c7ff5e-19c0-4565-b5ba-28dc203b9e60"/>
+					<textElement verticalAlignment="Top">
+						<font fontName="Times New Roman" size="6" isBold="false"/>
+					</textElement>
+					<text><![CDATA[ ЗАО "Мерком". Дата оформления:]]></text>
+				</staticText>
+				<textField pattern="dd.MM.yyyy">
+					<reportElement x="92" y="0" width="37" height="7" uuid="76e3d990-852d-4596-9406-8cb69e0e7403"/>
+					<textElement>
+						<font fontName="Times New Roman" size="6" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="129" y="0" width="41" height="7" uuid="9ab8d598-c76c-48dd-972d-8d4211719085"/>
+					<textElement textAlignment="Right">
+						<font fontName="Times New Roman" size="6" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{country}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="0" y="109" width="173" height="7" uuid="1589292a-8b5a-4f3e-b9e0-c29573041376"/>
+					<textElement verticalAlignment="Bottom">
+						<font fontName="Times New Roman" size="6" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{document}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0">
+					<reportElement x="53" y="64" width="119" height="23" uuid="323db541-d1d8-4289-bf5a-a2877c99c906"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="18" isBold="true" isUnderline="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{price}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="0" y="6" width="173" height="44" uuid="3d4ac835-ce69-4a87-a9cd-bcc8676ab3f1"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="11" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="3" y="69" width="50" height="16" uuid="67bda96f-0939-43c1-88cc-0c7dfd49a9e9"/>
+					<textElement textAlignment="Center" verticalAlignment="Bottom">
+						<font fontName="Times New Roman" size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Cкидка:]]></text>
+				</staticText>
+				<textField pattern="#,##0">
+					<reportElement x="53" y="90" width="119" height="20" forecolor="#CC0000" uuid="710c587b-f79e-4af6-95fd-eec8c9695d11"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Times New Roman" size="14" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{fullPrice}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="53" y="92" width="119" height="20" uuid="33bb30c6-83a8-4df1-b9c6-6285a4bc3011"/>
+					<graphicElement>
+						<pen lineWidth="1.0"/>
+					</graphicElement>
+				</line>
+				<line direction="BottomUp">
+					<reportElement x="53" y="90" width="118" height="20" uuid="cbbdff5c-4aad-4247-9f93-8bd53c48347d"/>
+					<graphicElement>
+						<pen lineWidth="1.0"/>
+					</graphicElement>
+				</line>
+				<textField>
+					<reportElement x="3" y="85" width="50" height="18" uuid="94b4a783-56b7-491c-9f59-a7546fbbb7e8"/>
+					<textElement textAlignment="Center" verticalAlignment="Top">
+						<font fontName="Times New Roman" size="14" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{rate}.toString().concat("%")]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="3" y="50" width="167" height="20" uuid="d8a21a97-3ec3-42ea-92d4-7271ca95fa05"/>
+					<textElement>
+						<font size="12" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{NamePrice} + $F{measure}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+</jasperReport>

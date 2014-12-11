@@ -31,6 +31,7 @@ public class GUI {
     private JRadioButton rBtn13x8;
     private JButton btnStep2Back;
     private JButton btnPrint;
+    private JRadioButton rBtn6x4;
     private JFrame frame;
     ButtonGroup jRadioMenuSelectFormat;
 
@@ -57,10 +58,12 @@ public class GUI {
         tblCard.setDefaultRenderer(Boolean.class, new CheckBoxTableCellRenderer());
         tblCard.setDefaultRenderer(Long.class, new CardRender());
         tblCard.setDefaultRenderer(Object.class, new CardRender());
+        tblCard.setAutoCreateRowSorter(true);
 
         jRadioMenuSelectFormat = new ButtonGroup();
         jRadioMenuSelectFormat.add(rBtnA4);
         jRadioMenuSelectFormat.add(rBtn13x8);
+        jRadioMenuSelectFormat.add(rBtn6x4);
 
         btnSelect.addActionListener(new ActionListener() {
             @Override
@@ -136,6 +139,8 @@ public class GUI {
             reportsFile = "reports/repA4.jasper";
         }else if (rBtn13x8.isSelected()) {
             reportsFile = "reports/rep14x9.jasper";
+        }else if (rBtn6x4.isSelected()) {
+            reportsFile = "reports/rep6x4.jasper";
         }
 
 

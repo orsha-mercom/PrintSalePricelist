@@ -8,7 +8,7 @@ import java.util.Date;
 public class DocTableModel extends AbstractTableModel {
     private ArrayList<Document> docs;
     private SQL sql;
-    private static String headers[] = {"Выбор", "Дата", "Номер", "Поставщик"};
+    private static String headers[] = {"", "Дата", "Номер", "Поставщик"};
     private ArrayList<Boolean> selects;
 
     @Override

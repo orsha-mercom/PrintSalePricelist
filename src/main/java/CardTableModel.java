@@ -13,7 +13,7 @@ public class CardTableModel extends AbstractTableModel {
     private ArrayList<Card> cards;
     private SQL sql;
     private ArrayList<String> docsId;
-    private String[] colHeader = new String[]{"Выбор", "Название", "Цена", "Процент скидки", "Сумма без скидки", "Кол-во"};
+    private String[] colHeader = new String[]{"", "Название", "Цена", "%", "Сумма без скидки", "Кол-во"};
     private ArrayList<Boolean> selected;
 
     public CardTableModel(ArrayList<String> docsId) {
@@ -60,7 +60,7 @@ public class CardTableModel extends AbstractTableModel {
 
     @Override
     public boolean isCellEditable(int rowIndex, int columnIndex) {
-        if ((columnIndex == 3) || (columnIndex == 5)) {
+        if ((columnIndex == 3) || (columnIndex == 5) || (columnIndex == 4)) {
             return true;
         } else {
             return false;
@@ -85,6 +85,8 @@ public class CardTableModel extends AbstractTableModel {
             case 5:
                 cards.get(rowIndex).setCount((Integer) aValue);
                 break;
+            case 4:
+                cards.get(rowIndex).setFullPrice((Long) aValue);
             default:
         }
         fireTableRowsUpdated(rowIndex, rowIndex);
@@ -110,7 +112,7 @@ public class CardTableModel extends AbstractTableModel {
 
     @Override
     public int getColumnCount() {
-        return colHeader.length;
+        return 6;
     }
 
     @Override
@@ -161,6 +163,33 @@ class CardEditor extends AbstractCellEditor implements TableCellEditor {
     }
 }
 
+class CardEditorLongValue extends AbstractCellEditor implements TableCellEditor {
+    final JTextField tf = new JTextField();
+    Long value;
+
+    @Override
+    public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
+        //     tf.setText(String.valueOf(value));
+        if (!(Boolean)table.getValueAt(row, 0)) {
+            return null;
+        }
+        this.value = (Long) value;
+        tf.setText("");
+        return tf;
+    }
+
+    @Override
+    public Object getCellEditorValue() {
+        Long newVal;
+        try {
+            newVal = Long.parseLong(tf.getText());
+            return newVal;
+        } catch (Exception ex) {
+            return value;
+        }
+    }
+}
+
 class CardRender extends DefaultTableCellRenderer{
     @Override
     public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
@@ -171,9 +200,9 @@ class CardRender extends DefaultTableCellRenderer{
         } else {
             comp.setBackground(Color.WHITE);
         }
-        if (isSelected) {
-            comp.setBackground(Color.LIGHT_GRAY);
-        }
+//        if (isSelected) {
+//            comp.setBackground(Color.LIGHT_GRAY);
+//        }
         return comp;
     }
 }
@@ -188,9 +217,9 @@ class CheckBoxTableCellRenderer extends JCheckBox implements TableCellRenderer {
             setBackground(Color.WHITE);
             setSelected(false);
         }
-        if (isSelected) {
-            setBackground(Color.LIGHT_GRAY);
-        }
+//        if (isSelected) {
+//            setBackground(Color.LIGHT_GRAY);
+//        }
         return this;
     }
 }

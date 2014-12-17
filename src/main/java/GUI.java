@@ -50,15 +50,21 @@ public class GUI {
         tblDoc.setDefaultRenderer(Integer.class, new CardRender());
         tblDoc.setDefaultRenderer(Long.class, new CardRender());
         tblDoc.setDefaultRenderer(Boolean.class, new CheckBoxTableCellRenderer());
+        tblDoc.getColumnModel().getColumn(0).setMaxWidth(23);
+        tblDoc.getColumnModel().getColumn(1).setPreferredWidth(125);
+        tblDoc.setAutoCreateRowSorter(true);
 
         tblCard.getTableHeader().setReorderingAllowed(false);
         tblCard.setDefaultEditor(Integer.class, new CardEditor());
+        tblCard.setDefaultEditor(Long.class, new CardEditorLongValue());
         tblCard.setDefaultRenderer(Integer.class, new CardRender());
         tblCard.setDefaultRenderer(String.class, new CardRender());
         tblCard.setDefaultRenderer(Boolean.class, new CheckBoxTableCellRenderer());
         tblCard.setDefaultRenderer(Long.class, new CardRender());
         tblCard.setDefaultRenderer(Object.class, new CardRender());
         tblCard.setAutoCreateRowSorter(true);
+
+
 
         jRadioMenuSelectFormat = new ButtonGroup();
         jRadioMenuSelectFormat.add(rBtnA4);
@@ -159,6 +165,7 @@ public class GUI {
         frame.setContentPane(mainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
+
         double scrWidth = Toolkit.getDefaultToolkit().getScreenSize().getWidth();
         double scrHeight = Toolkit.getDefaultToolkit().getScreenSize().getHeight();
         frame.setLocation((int) (scrWidth - frame.getWidth()) / 2, (int) (scrHeight - frame.getHeight()) / 2);
@@ -216,6 +223,17 @@ public class GUI {
             if ((stepNumber == 1) && (getCurrentStep() == 0)) {
                 ArrayList<String> selDocs = ((DocTableModel)tblDoc.getModel()).getSelDocId();
                 tblCard.setModel(new CardTableModel(selDocs));
+                tblCard.getColumnModel().getColumn(0).setMaxWidth(23);
+                tblCard.getColumnModel().getColumn(1).setMinWidth(400);
+                tblCard.getColumnModel().getColumn(1).setPreferredWidth(400);
+                tblCard.getColumnModel().getColumn(5).setMinWidth(40);
+                tblCard.getColumnModel().getColumn(5).setMaxWidth(40);
+                tblCard.getColumnModel().getColumn(5).setPreferredWidth(40);
+                tblCard.getColumnModel().getColumn(3).setMinWidth(40);
+                tblCard.getColumnModel().getColumn(3).setMaxWidth(40);
+                tblCard.getColumnModel().getColumn(3).setPreferredWidth(40);
+                tblCard.getColumnModel().getColumn(2).setMaxWidth(140);
+                tblCard.getColumnModel().getColumn(4).setMaxWidth(140);
             }
             if (i == stepNumber) {
                 stepsPanel.setEnabledAt(i, true);

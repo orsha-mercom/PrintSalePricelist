@@ -47,6 +47,10 @@ public class Card {
         return fullPrice;
     }
 
+    public int getRate(){
+        return rate;
+    }
+
     public int getCount() {
         return count;
     }
@@ -57,7 +61,11 @@ public class Card {
     }
 
     public void setFullPrice() {
-        fullPrice = (long)(getPrice() / ((100 - (double) rate) / 100));
+        if (rate >= 100) {
+            fullPrice = (long)0;
+            return;
+        }
+        fullPrice = (long) (getPrice() / ((100 - (double) rate) / 100));
         fullPrice = (fullPrice / 50) * 50;
     }
 
@@ -68,6 +76,13 @@ public class Card {
     public void setCount(int count) {
         this.count = count;
     }
+
+    public void setFullPrice(Long fullPrice) {
+        Double dblRate = (1 - ((double)(currentPrice) / (double)fullPrice)) * 100;
+        rate = dblRate.intValue();
+        this.fullPrice = fullPrice;
+    }
+
 
     public Card(String docId, String name, Long currentPrice, String country, String measure) {
         this.docId = docId;
